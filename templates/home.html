@@ -1,0 +1,53 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+</head>
+
+<form action="{% url 'home' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name='pdf' class="btn btn-primary">
+    <input type="submit" value="Get Priority" class="btn btn-primary">
+
+    
+</form>
+
+
+{% if pdf_name %}
+    <h1>{{ pdf_name }}</h1>
+{% endif %}
+    
+
+{% if final_ans %}
+    
+
+    
+
+
+    <div class="table">
+        <table>
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Priority Number
+                </th>
+                <th>
+                    Unit Number
+                </th>
+            </tr>
+            {% for i in final_ans %}
+                <tr>
+                    <td>
+                        {{ i.Priority_No }}
+                    </td>
+                    <td>
+                        {{ i.Unit_No }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </thead>
+    </table>
+    </div>
+
+
+
+{% endif %}
